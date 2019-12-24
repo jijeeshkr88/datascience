@@ -48,6 +48,8 @@ def iv_calc(var_list,target):
 		val_bad_distbn = val_bad_count/total_bad
 		val_woe = np.log(val_good_distbn/val_bad_distbn)
 		val_iv = (val_good_distbn-val_bad_distbn)*val_woe
+		if val_woe in [-np.inf,np.inf]:
+			val_woe = 0
 		d["value"] = val
 		d["all"] = val_count
 		d["bad"] = val_bad_count
